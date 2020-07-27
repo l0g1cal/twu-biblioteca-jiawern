@@ -9,11 +9,7 @@ public class Library {
         this.books = books;
     }
 
-    public String getBooksString() {
-        return getPrettyBookList();
-    }
-
-    private String getPrettyBookList() {
+    public String pprintBooks() {
         String prettyBookList = "";
         for (Book book : books) {
             prettyBookList = prettyBookList + book.toString() + '\n';

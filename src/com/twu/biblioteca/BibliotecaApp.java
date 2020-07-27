@@ -26,7 +26,7 @@ public class BibliotecaApp {
     }
 
     private static void displayAllBooks() {
-        String booksString = library.getBooksString();
+        String booksString = library.pprintBooks();
         System.out.println("Here is the list of books in this Biblioteca");
         System.out.println(booksString);
     }
