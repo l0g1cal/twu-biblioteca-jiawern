@@ -20,8 +20,10 @@ public class LibraryTest {
 
     @Test
     public void shouldCheckoutBookIfAvailable() {
+        assertEquals(1, library.totalBooksInLibrary());
         Book bookToCheckout = books.get(0);
         String output = library.checkoutBook(bookToCheckout);
         assertEquals("Thank you! Enjoy the book", output);
+        assertEquals(0, library.totalBooksInLibrary());
     }
 }
