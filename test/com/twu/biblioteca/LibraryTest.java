@@ -22,8 +22,8 @@ public class LibraryTest {
     public void shouldCheckoutBookIfAvailable() {
         assertEquals(1, library.totalBooksInLibrary());
         Book bookToCheckout = books.get(0);
-        String output = library.checkoutBook(bookToCheckout);
-        assertEquals("Thank you! Enjoy the book", output);
+        boolean output = library.checkoutBook(bookToCheckout);
+        assertEquals(true, output);
         assertEquals(0, library.totalBooksInLibrary());
     }
 }

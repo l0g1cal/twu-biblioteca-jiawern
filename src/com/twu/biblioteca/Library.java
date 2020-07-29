@@ -10,25 +10,31 @@ public class Library {
         this.books = books;
     }
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
     public int totalBooksInLibrary() {
         return books.size();
     }
 
-    public String checkoutBook(Book book) {
+    public boolean checkoutBook(Book book) {
         for (Book b : books) {
             if (b.equals(book)) {
                 books.remove(b);
                 borrowedBooks.add(b);
-                return "Thank you! Enjoy the book";
+                return true;
             }
         }
-        return "Book is unavailable";
+        return false;
     }
 
     public String pprintBooks() {
         String prettyBookList = "";
+        int count = 0;
         for (Book book : books) {
-            prettyBookList = prettyBookList + book.toString() + '\n';
+            prettyBookList = prettyBookList + count + ") " + book.toString() + '\n';
+            count++;
         }
         return prettyBookList;
     }

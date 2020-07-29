@@ -11,6 +11,7 @@ public class BibliotecaApp {
     private static Library library;
     private static Map<Integer, Option> optionMap = new HashMap<>();
     private static Map<Integer, String> optionDescMap = new HashMap<>();
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         createNewBiblioteca();
@@ -49,7 +50,6 @@ public class BibliotecaApp {
     }
 
     private static String getUserInput() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
@@ -84,6 +84,8 @@ public class BibliotecaApp {
     private static void createUserOptions() {
         optionMap.put(DISPLAY_BOOKS_OPTION, new DisplayBooksOption());
         optionDescMap.put(DISPLAY_BOOKS_OPTION, DISPLAY_BOOKS_OPTION_DESC);
+        optionMap.put(CHECKOUT_BOOK_OPTION, new CheckoutBookOption());
+        optionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
     }
 
     private static class DisplayBooksOption implements Option {
@@ -92,6 +94,35 @@ public class BibliotecaApp {
             String booksString = library.pprintBooks();
             printToCommandLine("Here is the list of books in this Biblioteca");
             printToCommandLine(booksString);
+        }
+    }
+
+    private static class CheckoutBookOption implements Option {
+        @Override
+        public void run() {
+            while (true) {
+                printToCommandLine("Select a book that you would like to checkout ... Or type 'back' to go back to options");
+                String ipt = scanner.nextLine();
+                if (ipt.equals("back")) {
+                    break;
+                }
+                try {
+                    ArrayList<Book> books = library.getBooks();
+                    Book selectedBook = books.get(Integer.parseInt(ipt));
+                    boolean isCheckout = library.checkoutBook(selectedBook);
+                    if (isCheckout) {
+                        printToCommandLine("Thank you! Enjoy the book!");
+                        break;
+                    } else {
+                        printToCommandLine("Sorry, that book is unavailable");
+                    }
+
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    printToCommandLine("Sorry, that book is unavailable");
+                }
+            }
+
         }
     }
 
