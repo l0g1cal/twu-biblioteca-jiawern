@@ -14,6 +14,10 @@ public class Library {
         return books;
     }
 
+    public ArrayList<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
     public int totalBooksInLibrary() {
         return books.size();
     }
@@ -44,7 +48,7 @@ public class Library {
         return false;
     }
 
-    public String pprintBooks() {
+    public String pprintBooks(ArrayList<Book> books) {
         String prettyBookList = "";
         int count = 0;
         for (Book book : books) {

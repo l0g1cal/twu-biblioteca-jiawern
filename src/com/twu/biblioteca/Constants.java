@@ -11,4 +11,7 @@ public final class Constants {
 
     public static final Integer CHECKOUT_BOOK_OPTION = 2;
     public static final String CHECKOUT_BOOK_OPTION_DESC = "Checkout book";
+
+    public static final Integer RETURN_BOOK_OPTION = 3;
+    public static final String RETURN_BOOK_OPTION_DESC = "Return book";
 }

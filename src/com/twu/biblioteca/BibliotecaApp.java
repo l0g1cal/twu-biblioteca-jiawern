@@ -86,12 +86,16 @@ public class BibliotecaApp {
         optionDescMap.put(DISPLAY_BOOKS_OPTION, DISPLAY_BOOKS_OPTION_DESC);
         optionMap.put(CHECKOUT_BOOK_OPTION, new CheckoutBookOption());
         optionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
+        optionMap.put(RETURN_BOOK_OPTION, new ReturnBookOption());
+        optionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
+
     }
 
     private static class DisplayBooksOption implements Option {
         @Override
         public void run() {
-            String booksString = library.pprintBooks();
+            ArrayList<Book> books = library.getBooks();
+            String booksString = library.pprintBooks(books);
             printToCommandLine("Here is the list of books in this Biblioteca");
             printToCommandLine(booksString);
         }
@@ -102,12 +106,15 @@ public class BibliotecaApp {
         public void run() {
             while (true) {
                 printToCommandLine("Select a book that you would like to checkout ... Or type 'back' to go back to options");
+                ArrayList<Book> books = library.getBooks();
+                String booksString = library.pprintBooks(books);
+                printToCommandLine("Here is the list of books in this Biblioteca");
+                printToCommandLine(booksString);
                 String ipt = scanner.nextLine();
                 if (ipt.equals("back")) {
                     break;
                 }
                 try {
-                    ArrayList<Book> books = library.getBooks();
                     Book selectedBook = books.get(Integer.parseInt(ipt));
                     boolean isCheckout = library.checkoutBook(selectedBook);
                     if (isCheckout) {
@@ -120,6 +127,37 @@ public class BibliotecaApp {
                 } catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
                     printToCommandLine("Sorry, that book is unavailable");
+                }
+            }
+
+        }
+    }
+
+    private static class ReturnBookOption implements Option {
+        @Override
+        public void run() {
+            while (true) {
+                printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");
+                ArrayList<Book> borrowedBooks = library.getBorrowedBooks();
+                String borrowedBooksString = library.pprintBooks(borrowedBooks);
+                printToCommandLine(borrowedBooksString);
+                String ipt = scanner.nextLine();
+                if (ipt.equals("back")) {
+                    break;
+                }
+                try {
+                    Book selectedBook = borrowedBooks.get(Integer.parseInt(ipt));
+                    boolean isReturn = library.returnBook(selectedBook);
+                    if (isReturn) {
+                        printToCommandLine("Thank you for returning the book.");
+                        break;
+                    } else {
+                        printToCommandLine("That is not a valid book to return.");
+                    }
+
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    printToCommandLine("That is not a valid book to return.");
                 }
             }
 
