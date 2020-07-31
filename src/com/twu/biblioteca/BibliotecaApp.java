@@ -38,8 +38,8 @@ public class BibliotecaApp {
     private static void awaitUserSelection() {
         printToCommandLine("Please select an option number to continue ... Or type 'exit' to end program\n");
         displayOptions();
-        String line = getUserInput();
-        verifyAndRunInput(line);
+        String userInput = getUserInput();
+        verifyAndRunInput(userInput);
     }
 
     private static void displayOptions() {
@@ -94,10 +94,7 @@ public class BibliotecaApp {
     private static class DisplayBooksOption implements Option {
         @Override
         public void run() {
-            ArrayList<Book> books = library.getBooks();
-            String booksString = library.pprintBooks(books);
-            printToCommandLine("Here is the list of books in this Biblioteca");
-            printToCommandLine(booksString);
+            getBooks();
         }
     }
 
@@ -106,10 +103,7 @@ public class BibliotecaApp {
         public void run() {
             while (true) {
                 printToCommandLine("Select a book that you would like to checkout ... Or type 'back' to go back to options");
-                ArrayList<Book> books = library.getBooks();
-                String booksString = library.pprintBooks(books);
-                printToCommandLine("Here is the list of books in this Biblioteca");
-                printToCommandLine(booksString);
+                ArrayList<Book> books = getBooks();
                 String ipt = scanner.nextLine();
                 if (ipt.equals("back")) {
                     break;
@@ -118,15 +112,15 @@ public class BibliotecaApp {
                     Book selectedBook = books.get(Integer.parseInt(ipt));
                     boolean isCheckout = library.checkoutBook(selectedBook);
                     if (isCheckout) {
-                        printToCommandLine("Thank you! Enjoy the book!");
+                        printToCommandLine(CHECKOUT_BOOK_SUCCESS_MESSAGE);
                         break;
                     } else {
-                        printToCommandLine("Sorry, that book is unavailable");
+                        printToCommandLine(CHECKOUT_BOOK_FAILURE_MESSAGE);
                     }
 
                 } catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
-                    printToCommandLine("Sorry, that book is unavailable");
+                    printToCommandLine(CHECKOUT_BOOK_FAILURE_MESSAGE);
                 }
             }
 
@@ -138,9 +132,7 @@ public class BibliotecaApp {
         public void run() {
             while (true) {
                 printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");
-                ArrayList<Book> borrowedBooks = library.getBorrowedBooks();
-                String borrowedBooksString = library.pprintBooks(borrowedBooks);
-                printToCommandLine(borrowedBooksString);
+                ArrayList<Book> borrowedBooks = getBorrowedBooks();
                 String ipt = scanner.nextLine();
                 if (ipt.equals("back")) {
                     break;
@@ -149,19 +141,34 @@ public class BibliotecaApp {
                     Book selectedBook = borrowedBooks.get(Integer.parseInt(ipt));
                     boolean isReturn = library.returnBook(selectedBook);
                     if (isReturn) {
-                        printToCommandLine("Thank you for returning the book.");
+                        printToCommandLine(RETURN_BOOK_SUCCESS_MESSAGE);
                         break;
                     } else {
-                        printToCommandLine("That is not a valid book to return.");
+                        printToCommandLine(RETURN_BOOK_FAILURE_MESSAGE);
                     }
 
                 } catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
-                    printToCommandLine("That is not a valid book to return.");
+                    printToCommandLine(RETURN_BOOK_FAILURE_MESSAGE);
                 }
             }
 
         }
+    }
+
+    private static ArrayList<Book> getBooks() {
+        ArrayList<Book> books = library.getBooks();
+        String booksString = library.pprintBooks(books);
+        printToCommandLine("Here is the list of books in this Biblioteca");
+        printToCommandLine(booksString);
+        return books;
+    }
+
+    private static ArrayList<Book> getBorrowedBooks() {
+        ArrayList<Book> borrowedBooks = library.getBorrowedBooks();
+        String borrowedBooksString = library.pprintBooks(borrowedBooks);
+        printToCommandLine(borrowedBooksString);
+        return borrowedBooks;
     }
 
     private static void printToCommandLine(String message) {
