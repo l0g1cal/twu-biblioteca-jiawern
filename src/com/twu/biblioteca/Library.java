@@ -18,11 +18,26 @@ public class Library {
         return books.size();
     }
 
+    public int totalBorrowedBooks() {
+        return borrowedBooks.size();
+    }
+
     public boolean checkoutBook(Book book) {
         for (Book b : books) {
             if (b.equals(book)) {
                 books.remove(b);
                 borrowedBooks.add(b);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean returnBook(Book book) {
+        for (Book b : borrowedBooks) {
+            if (b.equals(book)) {
+                borrowedBooks.remove(b);
+                books.add(b);
                 return true;
             }
         }

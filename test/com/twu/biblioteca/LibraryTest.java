@@ -10,10 +10,11 @@ import static org.junit.Assert.assertEquals;
 public class LibraryTest {
     private ArrayList<Book> books = new ArrayList<Book>();
     private Library library;
+    private Book book1;
 
     @Before
     public void setUp() {
-        Book book1 = new Book("title1", "author1", "2020");
+        book1 = new Book("title1", "author1", "2020");
         books.add(book1);
         library = new Library(books);
     }
@@ -25,5 +26,17 @@ public class LibraryTest {
         boolean output = library.checkoutBook(bookToCheckout);
         assertEquals(true, output);
         assertEquals(0, library.totalBooksInLibrary());
+        assertEquals(1, library.totalBorrowedBooks());
+    }
+
+    @Test
+    public void shouldReturnBook() {
+        assertEquals(1, library.totalBooksInLibrary());
+        Book bookToCheckout = books.get(0);
+        library.checkoutBook(bookToCheckout);
+        boolean returnOutput = library.returnBook(bookToCheckout);
+        assertEquals(true, returnOutput);
+        assertEquals(1, library.totalBooksInLibrary());
+        assertEquals(0, library.totalBorrowedBooks());
     }
 }
