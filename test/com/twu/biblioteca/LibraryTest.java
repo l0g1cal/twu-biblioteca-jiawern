@@ -20,7 +20,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldCheckoutBookIfAvailable() {
+    public void checkoutBookWhenBookAvailableShouldReturnTrueAndMakeBookUnavailable() {
         assertEquals(1, library.totalBooksInLibrary());
         Book bookToCheckout = books.get(0);
         boolean output = library.checkoutBook(bookToCheckout);
@@ -30,7 +30,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldReturnBook() {
+    public void returnBookWhenBookBelongsToLibraryShouldReturnTrueAndMakeBookAvailable() {
         assertEquals(1, library.totalBooksInLibrary());
         Book bookToCheckout = books.get(0);
         library.checkoutBook(bookToCheckout);
