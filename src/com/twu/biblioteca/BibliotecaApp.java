@@ -1,5 +1,10 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.option.CheckoutBookOption;
+import com.twu.biblioteca.option.DisplayBooksOption;
+import com.twu.biblioteca.option.Option;
+import com.twu.biblioteca.option.ReturnBookOption;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +19,8 @@ public class BibliotecaApp {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        createNewBiblioteca();
+        createNewLibrary();
+        createUserOptions();
         displayWelcomeMessage();
 
         while (true) {
@@ -22,13 +28,34 @@ public class BibliotecaApp {
         }
     }
 
-    private static BibliotecaApp createNewBiblioteca() {
-        return new BibliotecaApp();
+    public static Library getLibrary() {
+        return library;
     }
 
-    private BibliotecaApp() {
-        createNewLibrary();
-        createUserOptions();
+    public static Scanner getScanner() {
+        return scanner;
+    }
+
+    private static void createNewLibrary() {
+        library = new Library(createNewBooks());
+    }
+
+    private static ArrayList<Book> createNewBooks() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        Book book1 = new Book("title1", "author1", "2020");
+        Book book2 = new Book("title2", "author2", "2020");
+        books.add(book1);
+        books.add(book2);
+        return books;
+    }
+
+    private static void createUserOptions() {
+        optionMap.put(DISPLAY_BOOKS_OPTION, new DisplayBooksOption());
+        optionDescMap.put(DISPLAY_BOOKS_OPTION, DISPLAY_BOOKS_OPTION_DESC);
+        optionMap.put(CHECKOUT_BOOK_OPTION, new CheckoutBookOption());
+        optionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
+        optionMap.put(RETURN_BOOK_OPTION, new ReturnBookOption());
+        optionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
     }
 
     private static void displayWelcomeMessage() {
@@ -68,110 +95,7 @@ public class BibliotecaApp {
         }
     }
 
-    private static void createNewLibrary() {
-        library = new Library(createNewBooks());
-    }
-
-    private static ArrayList<Book> createNewBooks() {
-        ArrayList<Book> books = new ArrayList<Book>();
-        Book book1 = new Book("title1", "author1", "2020");
-        Book book2 = new Book("title2", "author2", "2020");
-        books.add(book1);
-        books.add(book2);
-        return books;
-    }
-
-    private static void createUserOptions() {
-        optionMap.put(DISPLAY_BOOKS_OPTION, new DisplayBooksOption());
-        optionDescMap.put(DISPLAY_BOOKS_OPTION, DISPLAY_BOOKS_OPTION_DESC);
-        optionMap.put(CHECKOUT_BOOK_OPTION, new CheckoutBookOption());
-        optionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
-        optionMap.put(RETURN_BOOK_OPTION, new ReturnBookOption());
-        optionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
-
-    }
-
-    private static class DisplayBooksOption implements Option {
-        @Override
-        public void run() {
-            getBooks();
-        }
-    }
-
-    private static class CheckoutBookOption implements Option {
-        @Override
-        public void run() {
-            while (true) {
-                printToCommandLine("Select a book that you would like to checkout ... Or type 'back' to go back to options");
-                ArrayList<Book> books = getBooks();
-                String ipt = scanner.nextLine();
-                if (ipt.equals("back")) {
-                    break;
-                }
-                try {
-                    Book selectedBook = books.get(Integer.parseInt(ipt));
-                    boolean isCheckout = library.checkoutBook(selectedBook);
-                    if (isCheckout) {
-                        printToCommandLine(CHECKOUT_BOOK_SUCCESS_MESSAGE);
-                        break;
-                    } else {
-                        printToCommandLine(CHECKOUT_BOOK_FAILURE_MESSAGE);
-                    }
-
-                } catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
-                    printToCommandLine(CHECKOUT_BOOK_FAILURE_MESSAGE);
-                }
-            }
-
-        }
-    }
-
-    private static class ReturnBookOption implements Option {
-        @Override
-        public void run() {
-            while (true) {
-                printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");
-                ArrayList<Book> borrowedBooks = getBorrowedBooks();
-                String ipt = scanner.nextLine();
-                if (ipt.equals("back")) {
-                    break;
-                }
-                try {
-                    Book selectedBook = borrowedBooks.get(Integer.parseInt(ipt));
-                    boolean isReturn = library.returnBook(selectedBook);
-                    if (isReturn) {
-                        printToCommandLine(RETURN_BOOK_SUCCESS_MESSAGE);
-                        break;
-                    } else {
-                        printToCommandLine(RETURN_BOOK_FAILURE_MESSAGE);
-                    }
-
-                } catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
-                    printToCommandLine(RETURN_BOOK_FAILURE_MESSAGE);
-                }
-            }
-
-        }
-    }
-
-    private static ArrayList<Book> getBooks() {
-        ArrayList<Book> books = library.getBooks();
-        String booksString = library.pprintBooks(books);
-        printToCommandLine("Here is the list of books in this Biblioteca");
-        printToCommandLine(booksString);
-        return books;
-    }
-
-    private static ArrayList<Book> getBorrowedBooks() {
-        ArrayList<Book> borrowedBooks = library.getBorrowedBooks();
-        String borrowedBooksString = library.pprintBooks(borrowedBooks);
-        printToCommandLine(borrowedBooksString);
-        return borrowedBooks;
-    }
-
-    private static void printToCommandLine(String message) {
+    public static void printToCommandLine(String message) {
         System.out.println(message);
     }
 }
