@@ -45,7 +45,6 @@ public class CheckoutBookOption implements Option {
             }
 
         } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
             BibliotecaApp.printToCommandLine(CHECKOUT_BOOK_FAILURE_MESSAGE);
         }
         return false;
