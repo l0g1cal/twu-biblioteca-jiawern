@@ -13,10 +13,7 @@ import static com.twu.biblioteca.Constants.CHECKOUT_BOOK_SUCCESS_MESSAGE;
 public class CheckoutBookOption implements Option {
 
     @Override
-    public void run() {
-        Library library = BibliotecaApp.getLibrary();
-        Scanner scanner = BibliotecaApp.getScanner();
-
+    public void run(Library library, Scanner scanner) {
         while (true) {
             BibliotecaApp.printToCommandLine("Select a book that you would like to checkout ... Or type 'back' to go back to options");
             ArrayList<Book> books = library.getBooks();

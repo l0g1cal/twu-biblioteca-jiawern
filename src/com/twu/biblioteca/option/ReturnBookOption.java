@@ -13,10 +13,7 @@ import static com.twu.biblioteca.Constants.RETURN_BOOK_SUCCESS_MESSAGE;
 public class ReturnBookOption implements Option {
 
     @Override
-    public void run() {
-        Library library = BibliotecaApp.getLibrary();
-        Scanner scanner = BibliotecaApp.getScanner();
-
+    public void run(Library library, Scanner scanner) {
         while (true) {
             BibliotecaApp.printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");
             ArrayList<Book> borrowedBooks = library.getBorrowedBooks();

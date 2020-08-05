@@ -28,14 +28,6 @@ public class BibliotecaApp {
         }
     }
 
-    public static Library getLibrary() {
-        return library;
-    }
-
-    public static Scanner getScanner() {
-        return scanner;
-    }
-
     private static void createNewLibrary() {
         library = new Library(createNewBooks());
     }
@@ -88,7 +80,7 @@ public class BibliotecaApp {
         try {
             Integer iptValue = Integer.parseInt(ipt);
             Option opt = optionMap.get(iptValue);
-            opt.run();
+            opt.run(library, scanner);
         }
         catch (Exception e) {
             printToCommandLine("Please select a valid option!");

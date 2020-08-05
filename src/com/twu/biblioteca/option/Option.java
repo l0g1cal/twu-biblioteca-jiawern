@@ -1,5 +1,9 @@
 package com.twu.biblioteca.option;
 
+import com.twu.biblioteca.Library;
+
+import java.util.Scanner;
+
 public interface Option {
-    void run();
+    void run(Library library, Scanner scanner);
 }
