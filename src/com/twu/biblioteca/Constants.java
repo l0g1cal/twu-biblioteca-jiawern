@@ -18,4 +18,7 @@ public final class Constants {
 
     public static final Integer RETURN_BOOK_OPTION = 3;
     public static final String RETURN_BOOK_OPTION_DESC = "Return book";
+
+    public static final Integer DISPLAY_MOVIES_OPTION = 4;
+    public static final String DISPLAY_MOVIES_OPTION_DESC = "List of movies";
 }

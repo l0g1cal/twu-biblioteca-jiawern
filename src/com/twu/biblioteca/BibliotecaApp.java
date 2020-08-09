@@ -29,7 +29,7 @@ public class BibliotecaApp {
     }
 
     private static void createNewLibrary() {
-        library = new Library(createNewBooks());
+        library = new Library(createNewBooks(), createNewMovies());
     }
 
     private static ArrayList<Book> createNewBooks() {
@@ -39,6 +39,15 @@ public class BibliotecaApp {
         books.add(book1);
         books.add(book2);
         return books;
+    }
+
+    private static ArrayList<Movie> createNewMovies() {
+        ArrayList<Movie> movies = new ArrayList<Movie>();
+        Movie movie1 = new Movie("title1","2020", "director1");
+        Movie movie2 = new Movie("title2","2020", "director2", 9);
+        movies.add(movie1);
+        movies.add(movie2);
+        return movies;
     }
 
     private static void createUserOptions() {

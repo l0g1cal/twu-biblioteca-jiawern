@@ -3,12 +3,23 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class Library {
-    private ArrayList<Book> books;;
-    private ArrayList<Book> borrowedBooks = new ArrayList<Book>();;
+    private ArrayList<Book> books;
+    private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
+    private ArrayList<Movie> movies;
 
-    public Library(ArrayList<Book> books) {
+
+    public Library(ArrayList<Book> books, ArrayList<Movie> movies) {
         this.books = books;
+        this.movies = movies;
     }
+
+//    public ArrayList<Movie> getMovies() {
+//        return movies;
+//    }
+//
+//    public int totalMoviesInLibrary() {
+//        return movies.size();
+//    }
 
     public ArrayList<Book> getBooks() {
         return books;

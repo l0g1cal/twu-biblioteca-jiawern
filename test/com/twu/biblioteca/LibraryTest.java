@@ -9,14 +9,20 @@ import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
     private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Movie> movies = new ArrayList<Movie>();
     private Library library;
     private Book book1;
+    private Movie movie1;
 
     @Before
     public void setUp() {
         book1 = new Book("title1", "author1", "2020");
         books.add(book1);
-        library = new Library(books);
+
+        movie1 = new Movie("title1","2020", "director1");
+        movies.add(movie1);
+
+        library = new Library(books, movies);
     }
 
     @Test
