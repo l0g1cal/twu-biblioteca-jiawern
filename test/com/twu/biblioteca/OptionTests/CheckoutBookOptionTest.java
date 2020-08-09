@@ -50,11 +50,6 @@ public class CheckoutBookOptionTest {
         books.add(book1);
         books.add(book2);
 
-        movie1 = new Movie("title1","2020", "director1");
-        movie2 = new Movie("title2","2020", "director2", 9);
-        movies.add(movie1);
-        movies.add(movie2);
-
         library = new Library(books, movies);
     }
 

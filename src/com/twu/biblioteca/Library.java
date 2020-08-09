@@ -13,14 +13,6 @@ public class Library {
         this.movies = movies;
     }
 
-//    public ArrayList<Movie> getMovies() {
-//        return movies;
-//    }
-//
-//    public int totalMoviesInLibrary() {
-//        return movies.size();
-//    }
-
     public ArrayList<Book> getBooks() {
         return books;
     }
