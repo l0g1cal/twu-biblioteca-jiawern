@@ -12,7 +12,7 @@ public class Library {
         this.books = books;
         this.movies = movies;
     }
-    
+
     public ArrayList<Book> getBooks() {
         return books;
     }
