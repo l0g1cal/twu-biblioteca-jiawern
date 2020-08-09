@@ -12,7 +12,7 @@ public class DisplayBooksOption implements Option {
     @Override
     public void run(Library library, Scanner scanner) {
         ArrayList<Book> books = library.getBooks();
-        String booksString = library.pprintBooks(books);
+        String booksString = library.pprint(books);
         BibliotecaApp.printToCommandLine("Here is the list of books in this Biblioteca");
         BibliotecaApp.printToCommandLine(booksString);
     }

@@ -25,7 +25,7 @@ public class CheckoutBookOption implements Option {
     }
 
     private void displayBooks(Library library, ArrayList<Book> books) {
-        String booksString = library.pprintBooks(books);
+        String booksString = library.pprint(books);
         BibliotecaApp.printToCommandLine("Here is the list of books in this Biblioteca");
         BibliotecaApp.printToCommandLine(booksString);
     }

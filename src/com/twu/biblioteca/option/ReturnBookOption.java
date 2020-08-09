@@ -26,7 +26,7 @@ public class ReturnBookOption implements Option {
     }
 
     private void displayBorrowedBooks(Library library, ArrayList<Book> borrowedBooks) {
-        String borrowedBooksString = library.pprintBooks(borrowedBooks);
+        String borrowedBooksString = library.pprint(borrowedBooks);
         BibliotecaApp.printToCommandLine(borrowedBooksString);
     }
 

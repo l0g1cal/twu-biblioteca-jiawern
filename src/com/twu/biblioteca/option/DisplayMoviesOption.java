@@ -12,7 +12,7 @@ public class DisplayMoviesOption implements Option {
     @Override
     public void run(Library library, Scanner scanner) {
         ArrayList<Movie> movies = library.getMovies();
-        String moviesString = library.pprintMovies(movies);
+        String moviesString = library.pprint(movies);
         BibliotecaApp.printToCommandLine("Here is the list of movies in this Biblioteca");
         BibliotecaApp.printToCommandLine(moviesString);
     }

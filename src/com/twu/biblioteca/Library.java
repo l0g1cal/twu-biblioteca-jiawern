@@ -54,23 +54,13 @@ public class Library {
         return false;
     }
 
-    public String pprintBooks(ArrayList<Book> books) {
-        String prettyBookList = "";
+    public String pprint(Iterable<?> items) {
+        String prettyList = "";
         int count = 0;
-        for (Book book : books) {
-            prettyBookList = prettyBookList + count + ") " + book.toString() + '\n';
+        for (Object item : items) {
+            prettyList = prettyList + count + ") " + item.toString() + '\n';
             count++;
         }
-        return prettyBookList;
-    }
-
-    public String pprintMovies(ArrayList<Movie> movies) {
-        String prettyMovieList = "";
-        int count = 0;
-        for (Movie movie : movies) {
-            prettyMovieList = prettyMovieList + count + ") " + movie.toString() + '\n';
-            count++;
-        }
-        return prettyMovieList;
+        return prettyList;
     }
 }
