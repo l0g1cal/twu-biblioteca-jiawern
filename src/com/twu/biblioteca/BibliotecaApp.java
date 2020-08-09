@@ -56,6 +56,8 @@ public class BibliotecaApp {
         optionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
         optionMap.put(DISPLAY_MOVIES_OPTION, new DisplayMoviesOption());
         optionDescMap.put(DISPLAY_MOVIES_OPTION, DISPLAY_MOVIES_OPTION_DESC);
+        optionMap.put(CHECKOUT_MOVIE_OPTION, new CheckoutMovieOption());
+        optionDescMap.put(CHECKOUT_MOVIE_OPTION, CHECKOUT_MOVIE_OPTION_DESC);
     }
 
     private static void displayWelcomeMessage() {

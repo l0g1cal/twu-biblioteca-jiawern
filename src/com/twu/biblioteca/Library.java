@@ -6,6 +6,7 @@ public class Library {
     private ArrayList<Book> books;
     private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
     private ArrayList<Movie> movies;
+    private ArrayList<Movie> borrowedMovies = new ArrayList<Movie>();
 
 
     public Library(ArrayList<Book> books, ArrayList<Movie> movies) {
@@ -38,6 +39,17 @@ public class Library {
             if (b.equals(book)) {
                 books.remove(b);
                 borrowedBooks.add(b);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkoutMovie(Movie movie) {
+        for (Movie m : movies) {
+            if (m.equals(movie)) {
+                movies.remove(m);
+                borrowedMovies.add(m);
                 return true;
             }
         }

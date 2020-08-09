@@ -3,7 +3,7 @@ package com.twu.biblioteca.OptionTests;
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.Library;
 import com.twu.biblioteca.Movie;
-import com.twu.biblioteca.option.CheckoutBookOption;
+import com.twu.biblioteca.option.CheckoutMovieOption;
 import com.twu.biblioteca.option.Option;
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.CHECKOUT_BOOK_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.CHECKOUT_MOVIE_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class CheckoutMovieOptionTest {
