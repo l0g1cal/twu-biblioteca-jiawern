@@ -25,8 +25,6 @@ public class CheckoutBookOptionTest {
     private Library library;
     private Book book1;
     private Book book2;
-    private Movie movie1;
-    private Movie movie2;
     private ByteArrayInputStream inContent;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final InputStream originalIn = System.in;

@@ -21,8 +21,6 @@ public class DisplayBooksOptionTest {
     private Library library;
     private Book book1;
     private Book book2;
-    private Movie movie1;
-    private Movie movie2;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
