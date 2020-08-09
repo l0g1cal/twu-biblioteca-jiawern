@@ -1,7 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.OptionTests;
 
-import com.twu.biblioteca.option.CheckoutBookOption;
+import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Library;
 import com.twu.biblioteca.option.Option;
+import com.twu.biblioteca.option.ReturnBookOption;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +15,10 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.CHECKOUT_BOOK_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.RETURN_BOOK_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
-public class CheckoutBookOptionTest {
+public class ReturnBookOptionTest {
     private ArrayList<Book> books = new ArrayList<Book>();
     private Library library;
     private Book book1;
@@ -44,17 +46,16 @@ public class CheckoutBookOptionTest {
         books.add(book1);
         books.add(book2);
         library = new Library(books);
+        library.checkoutBook(book1);
     }
 
     @Test
-    public void checkoutBookOptionWhenRunAndBookAvailableShouldReturnListOfBooksAndOutputSuccessMessage() {
-        Option checkoutBookOption = new CheckoutBookOption();
-        checkoutBookOption.run(library, scanner);
-        String expectedOutput = "Select a book that you would like to checkout ... Or type 'back' to go back to options\n" +
-                "Here is the list of books in this Biblioteca\n" +
-                "0) title1,author1,2020\n" +
-                "1) title2,author2,2020\n\n" +
-                CHECKOUT_BOOK_SUCCESS_MESSAGE + "\n";
+    public void returnBookOptionWhenRunAndBookBelongsToLibraryShouldOutputSuccessMessage() {
+        Option returnBookOption = new ReturnBookOption();
+        returnBookOption.run(library, scanner);
+        String expectedOutput = "Select a book that you would like to return ... Or type 'back' to go back to options\n" +
+                "0) title1,author1,2020\n\n" +
+                RETURN_BOOK_SUCCESS_MESSAGE + "\n";
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);
     }

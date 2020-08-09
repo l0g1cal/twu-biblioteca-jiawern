@@ -1,5 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.OptionTests;
 
+import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Library;
 import com.twu.biblioteca.option.DisplayBooksOption;
 import com.twu.biblioteca.option.Option;
 import org.junit.After;
