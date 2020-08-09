@@ -12,9 +12,12 @@ public class Library {
         this.books = books;
         this.movies = movies;
     }
-
     public ArrayList<Book> getBooks() {
         return books;
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return movies;
     }
 
     public ArrayList<Book> getBorrowedBooks() {
@@ -59,5 +62,15 @@ public class Library {
             count++;
         }
         return prettyBookList;
+    }
+
+    public String pprintMovies(ArrayList<Movie> movies) {
+        String prettyMovieList = "";
+        int count = 0;
+        for (Movie movie : movies) {
+            prettyMovieList = prettyMovieList + count + ") " + movie.toString() + '\n';
+            count++;
+        }
+        return prettyMovieList;
     }
 }

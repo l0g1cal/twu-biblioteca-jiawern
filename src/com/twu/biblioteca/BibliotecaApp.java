@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.option.CheckoutBookOption;
-import com.twu.biblioteca.option.DisplayBooksOption;
-import com.twu.biblioteca.option.Option;
-import com.twu.biblioteca.option.ReturnBookOption;
+import com.twu.biblioteca.option.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,6 +54,8 @@ public class BibliotecaApp {
         optionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
         optionMap.put(RETURN_BOOK_OPTION, new ReturnBookOption());
         optionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
+        optionMap.put(DISPLAY_MOVIES_OPTION, new DisplayMoviesOption());
+        optionDescMap.put(DISPLAY_MOVIES_OPTION, DISPLAY_MOVIES_OPTION_DESC);
     }
 
     private static void displayWelcomeMessage() {
