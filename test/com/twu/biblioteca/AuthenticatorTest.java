@@ -14,7 +14,7 @@ public class AuthenticatorTest {
 
         User user = authenticator.login(libraryNumber, password);
 
-        assertEquals("adrianvdh", user.getLibraryNumber());
+        assertEquals("123-45678", user.getLibraryNumber());
         assertEquals("hello123", user.getPassword());
     }
 }

@@ -13,6 +13,14 @@ public class User {
         this.isLibrarian = isLibrarian;
     }
 
+    public String getLibraryNumber() {
+        return libraryNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public String toString() {
         return name + ": " + libraryNumber;
