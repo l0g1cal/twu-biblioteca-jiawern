@@ -23,7 +23,7 @@ public class AuthenticatorTest {
     }
 
     @Test
-    public void testUserLoginWithCorrectCredentials() {
+    public void authenticateUserWhenCorrectCredentialsShouldReturnUser() {
         String libraryNumber = "123-45678";
         String password = "p1";
 
