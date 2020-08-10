@@ -21,6 +21,10 @@ public class User {
         return password;
     }
 
+    public boolean login(String libraryNumber, String password) {
+        return this.libraryNumber.equals(libraryNumber) && this.password.equals(password);
+    }
+
     @Override
     public String toString() {
         return name + ": " + libraryNumber;

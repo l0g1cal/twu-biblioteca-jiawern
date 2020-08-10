@@ -11,12 +11,14 @@ import static com.twu.biblioteca.Constants.*;
 
 public class BibliotecaApp {
     private static Library library;
+    private static Authenticator authenticator;
     private static Map<Integer, Option> optionMap = new HashMap<>();
     private static Map<Integer, String> optionDescMap = new HashMap<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         createNewLibrary();
+        createNewAuthenticator();
         createUserOptions();
         displayWelcomeMessage();
 
@@ -45,6 +47,19 @@ public class BibliotecaApp {
         movies.add(movie1);
         movies.add(movie2);
         return movies;
+    }
+
+    private static void createNewAuthenticator() {
+        authenticator = new Authenticator(createNewUsers());
+    }
+
+    private static ArrayList<User> createNewUsers() {
+        ArrayList<User> users = new ArrayList<User>();
+        User user1 = new User("user1", "123-45678", "p1", true);
+        User user2 = new User("user2", "234-56789", "p2", false);
+        users.add(user1);
+        users.add(user2);
+        return users;
     }
 
     private static void createUserOptions() {
