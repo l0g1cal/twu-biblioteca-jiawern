@@ -5,15 +5,14 @@ import com.twu.biblioteca.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.CHECKOUT_BOOK_FAILURE_MESSAGE;
-import static com.twu.biblioteca.Constants.CHECKOUT_BOOK_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.*;
 
 public class CheckoutBookOption implements Option {
 
     @Override
     public void run(Library library, Scanner scanner, Authenticator authenticator) {
         while (true) {
-            BibliotecaApp.printToCommandLine("Select a book that you would like to checkout ... Or type 'back' to go back to options");
+            BibliotecaApp.printToCommandLine(SELECT_BOOK_MESSAGE);
             User currentUser = BibliotecaApp.getCurrentUser();
             ArrayList<Book> books = library.getBooks();
             displayBooks(library, books);
@@ -25,7 +24,7 @@ public class CheckoutBookOption implements Option {
 
     private void displayBooks(Library library, ArrayList<Book> books) {
         String booksString = library.pprint(books);
-        BibliotecaApp.printToCommandLine("Here is the list of books in this Biblioteca");
+        BibliotecaApp.printToCommandLine(BOOK_LIST_MESSAGE);
         BibliotecaApp.printToCommandLine(booksString);
     }
 

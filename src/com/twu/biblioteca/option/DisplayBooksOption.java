@@ -8,13 +8,15 @@ import com.twu.biblioteca.Library;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.twu.biblioteca.Constants.BOOK_LIST_MESSAGE;
+
 public class DisplayBooksOption implements Option {
 
     @Override
     public void run(Library library, Scanner scanner, Authenticator authenticator) {
         ArrayList<Book> books = library.getBooks();
         String booksString = library.pprint(books);
-        BibliotecaApp.printToCommandLine("Here is the list of books in this Biblioteca");
+        BibliotecaApp.printToCommandLine(BOOK_LIST_MESSAGE);
         BibliotecaApp.printToCommandLine(booksString);
     }
 }

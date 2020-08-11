@@ -15,7 +15,7 @@ public class CheckoutMovieOption implements Option {
     @Override
     public void run(Library library, Scanner scanner, Authenticator authenticator) {
         while (true) {
-            BibliotecaApp.printToCommandLine("Select a movie that you would like to checkout ... Or type 'back' to go back to options");
+            BibliotecaApp.printToCommandLine(SELECT_MOVIE_MESSAGE);
             ArrayList<Movie> movies = library.getMovies();
             displayMovies(library, movies);
             String ipt = scanner.nextLine();
@@ -26,7 +26,7 @@ public class CheckoutMovieOption implements Option {
 
     private void displayMovies(Library library, ArrayList<Movie> movies) {
         String moviesString = library.pprint(movies);
-        BibliotecaApp.printToCommandLine("Here is the list of movies in this Biblioteca");
+        BibliotecaApp.printToCommandLine(MOVIE_LIST_MESSAGE);
         BibliotecaApp.printToCommandLine(moviesString);
     }
 

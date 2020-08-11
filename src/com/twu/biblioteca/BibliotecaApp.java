@@ -95,7 +95,7 @@ public class BibliotecaApp {
     }
 
     private static void awaitUserSelection() {
-        printToCommandLine("Please select an option number to continue ... Or type 'exit' to end program");
+        printToCommandLine(SELECT_OPTION_MESSAGE);
         displayOptions();
         String userInput = getUserInput();
         verifyAndRunInput(userInput);
@@ -135,20 +135,20 @@ public class BibliotecaApp {
 
     private static void verifyAndRunInput(String ipt) {
         if (ipt.equals("exit")) {
-            printToCommandLine("User requested to end program. Exiting ...");
+            printToCommandLine(EXIT_MESSAGE);
             System.exit(0);
         }
         try {
             Integer iptValue = Integer.parseInt(ipt);
             if (currentUser == null && iptValue > 3) { // if not logged-in, can only choose 3 options
-                printToCommandLine("Please select a valid option!\n");
+                printToCommandLine(INCORRECT_OPTION_MESSAGE);
             } else {
                 Option opt = getOption(iptValue);
                 opt.run(library, scanner, authenticator);
             }
         }
         catch (Exception e) {
-            printToCommandLine("Please select a valid option!\n");
+            printToCommandLine(INCORRECT_OPTION_MESSAGE);
         }
     }
 

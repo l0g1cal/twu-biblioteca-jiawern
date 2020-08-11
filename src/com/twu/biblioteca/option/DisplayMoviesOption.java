@@ -8,13 +8,15 @@ import com.twu.biblioteca.Movie;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.twu.biblioteca.Constants.MOVIE_LIST_MESSAGE;
+
 public class DisplayMoviesOption implements Option {
 
     @Override
     public void run(Library library, Scanner scanner, Authenticator authenticator) {
         ArrayList<Movie> movies = library.getMovies();
         String moviesString = library.pprint(movies);
-        BibliotecaApp.printToCommandLine("Here is the list of movies in this Biblioteca");
+        BibliotecaApp.printToCommandLine(MOVIE_LIST_MESSAGE);
         BibliotecaApp.printToCommandLine(moviesString);
     }
 }

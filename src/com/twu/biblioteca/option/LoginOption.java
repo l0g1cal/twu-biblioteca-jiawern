@@ -7,17 +7,14 @@ import com.twu.biblioteca.User;
 
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.LOGIN_FAILURE_MESSAGE;
-import static com.twu.biblioteca.Constants.LOGIN_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.*;
 
 public class LoginOption implements Option {
 
     @Override
     public void run(Library library, Scanner scanner, Authenticator authenticator) {
         while (true) {
-            BibliotecaApp.printToCommandLine("Please enter your login details ... Or type 'back' to go back to options\n" +
-                            "Format: libraryNumber,password\n" +
-                            "Eg: 111-11111,passWORD\n");
+            BibliotecaApp.printToCommandLine(LOGIN_MESSAGE);
             String ipt = scanner.nextLine();
             String inputLibraryNumber = getInputLibraryNumber(ipt);
             String inputPassword = getInputPassword(ipt);

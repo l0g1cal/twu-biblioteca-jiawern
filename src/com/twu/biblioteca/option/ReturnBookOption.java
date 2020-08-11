@@ -5,8 +5,7 @@ import com.twu.biblioteca.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.RETURN_BOOK_FAILURE_MESSAGE;
-import static com.twu.biblioteca.Constants.RETURN_BOOK_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.*;
 
 public class ReturnBookOption implements Option {
 
@@ -16,10 +15,10 @@ public class ReturnBookOption implements Option {
             User currentUser = BibliotecaApp.getCurrentUser();
             boolean isUserHasBorrowedBooks = checkUserHasBorrowedBooks(library, currentUser);
             if (!isUserHasBorrowedBooks) {
-                BibliotecaApp.printToCommandLine("You currently do not have any borrowed books to return\n");
+                BibliotecaApp.printToCommandLine(NO_BORROWED_BOOKS_MESSAGE);
                 break;
             }
-            BibliotecaApp.printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");
+            BibliotecaApp.printToCommandLine(RETURN_BOOK_MESSAGE);
             ArrayList<Book> borrowedBooks = library.getBorrowedBooks(currentUser);
             displayBorrowedBooks(library, borrowedBooks);
             String ipt = scanner.nextLine();
