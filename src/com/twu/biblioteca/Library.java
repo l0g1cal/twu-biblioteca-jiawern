@@ -1,10 +1,12 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Library {
     private ArrayList<Book> books;
-    private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
+    private Map<User, ArrayList<Book>> borrowedBooksMap = new HashMap();
     private ArrayList<Movie> movies;
     private ArrayList<Movie> borrowedMovies = new ArrayList<Movie>();
 
@@ -22,7 +24,8 @@ public class Library {
         return movies;
     }
 
-    public ArrayList<Book> getBorrowedBooks() {
+    public ArrayList<Book> getBorrowedBooks(User user) {
+        ArrayList<Book> borrowedBooks = borrowedBooksMap.get(user);
         return borrowedBooks;
     }
 
@@ -30,15 +33,22 @@ public class Library {
         return books.size();
     }
 
-    public int totalBorrowedBooks() {
-        return borrowedBooks.size();
+    public int totalBorrowedBooks(User user) {
+        if (borrowedBooksMap.containsKey(user)) {
+            ArrayList<Book> borrowedBooks = borrowedBooksMap.get(user);
+            return borrowedBooks.size();
+        }
+        return 0;
     }
 
-    public boolean checkoutBook(Book book) {
+    public boolean checkoutBook(Book book, User user) {
+        if (!borrowedBooksMap.containsKey(user)) {
+            borrowedBooksMap.put(user, new ArrayList<Book>());
+        }
         for (Book b : books) {
             if (b.equals(book)) {
                 books.remove(b);
-                borrowedBooks.add(b);
+                borrowedBooksMap.get(user).add(b);
                 return true;
             }
         }
@@ -56,7 +66,8 @@ public class Library {
         return false;
     }
 
-    public boolean returnBook(Book book) {
+    public boolean returnBook(Book book, User user) {
+        ArrayList<Book> borrowedBooks = borrowedBooksMap.get(user);
         for (Book b : borrowedBooks) {
             if (b.equals(book)) {
                 borrowedBooks.remove(b);

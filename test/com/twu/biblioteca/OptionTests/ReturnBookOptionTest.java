@@ -1,8 +1,6 @@
 package com.twu.biblioteca.OptionTests;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Library;
-import com.twu.biblioteca.Movie;
+import com.twu.biblioteca.*;
 import com.twu.biblioteca.option.Option;
 import com.twu.biblioteca.option.ReturnBookOption;
 import org.junit.After;
@@ -22,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class ReturnBookOptionTest {
     private ArrayList<Book> books = new ArrayList<Book>();
     private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private User currentUser;
     private Library library;
     private Book book1;
     private Book book2;
@@ -49,7 +48,10 @@ public class ReturnBookOptionTest {
         books.add(book2);
 
         library = new Library(books, movies);
-        library.checkoutBook(book1);
+        currentUser = new User("user1", "123-45678", "p1", "user1@gmail.com", "12345678", true);
+
+        library.checkoutBook(book1, currentUser);
+        BibliotecaApp.setCurrentUser(currentUser);
     }
 
     @Test
