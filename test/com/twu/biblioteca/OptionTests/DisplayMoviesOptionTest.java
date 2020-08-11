@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import static com.twu.biblioteca.Constants.MOVIE_LIST_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class DisplayMoviesOptionTest {
@@ -43,7 +44,7 @@ public class DisplayMoviesOptionTest {
     public void displayMoviesOptionWhenRunShouldReturnListOfMovies() {
         Option displayOption = new DisplayMoviesOption();
         displayOption.run(library, null, null);
-        String expectedOutput = "Here is the list of movies in this Biblioteca\n" +
+        String expectedOutput = MOVIE_LIST_MESSAGE + "\n" +
                 "0) title1,2020,director1\n" +
                 "1) title2,2020,director2,9\n";
         String actualOutput = outContent.toString().trim() + "\n";

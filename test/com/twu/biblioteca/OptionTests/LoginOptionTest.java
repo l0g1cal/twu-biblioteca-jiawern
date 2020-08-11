@@ -14,6 +14,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.twu.biblioteca.Constants.LOGIN_MESSAGE;
 import static com.twu.biblioteca.Constants.LOGIN_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
@@ -49,10 +50,7 @@ public class LoginOptionTest {
     public void loginOptionWhenRunAndValidUserShouldReturnUserAndOutputSuccessMessage() {
         Option loginOption = new LoginOption();
         loginOption.run(null, scanner, authenticator);
-        String expectedOutput = "Please enter your login details ... Or type 'back' to go back to options\n" +
-                "Format: libraryNumber,password\n" +
-                "Eg: 111-11111,passWORD\n\n" +
-                LOGIN_SUCCESS_MESSAGE + "\n";
+        String expectedOutput = LOGIN_MESSAGE + "\n" + LOGIN_SUCCESS_MESSAGE;
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);
 

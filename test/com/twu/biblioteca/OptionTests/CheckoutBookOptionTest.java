@@ -16,7 +16,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.CHECKOUT_BOOK_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.*;
 import static org.junit.Assert.assertEquals;
 
 public class CheckoutBookOptionTest {
@@ -55,11 +55,10 @@ public class CheckoutBookOptionTest {
     public void checkoutBookOptionWhenRunAndBookAvailableShouldReturnListOfBooksAndOutputSuccessMessage() {
         Option checkoutBookOption = new CheckoutBookOption();
         checkoutBookOption.run(library, scanner, null);
-        String expectedOutput = "Select a book that you would like to checkout ... Or type 'back' to go back to options\n" +
-                "Here is the list of books in this Biblioteca\n" +
+        String expectedOutput = SELECT_BOOK_MESSAGE + "\n" + BOOK_LIST_MESSAGE + "\n" +
                 "0) title1,author1,2020\n" +
                 "1) title2,author2,2020\n\n" +
-                CHECKOUT_BOOK_SUCCESS_MESSAGE + "\n";
+                CHECKOUT_BOOK_SUCCESS_MESSAGE;
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);
     }

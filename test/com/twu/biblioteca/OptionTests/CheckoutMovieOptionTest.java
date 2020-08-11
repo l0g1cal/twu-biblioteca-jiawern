@@ -16,7 +16,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Constants.CHECKOUT_MOVIE_SUCCESS_MESSAGE;
+import static com.twu.biblioteca.Constants.*;
 import static org.junit.Assert.assertEquals;
 
 public class CheckoutMovieOptionTest {
@@ -55,11 +55,10 @@ public class CheckoutMovieOptionTest {
     public void checkoutMovieOptionWhenRunAndMovieAvailableShouldReturnListOfMoviesAndOutputSuccessMessage() {
         Option checkoutMovieOption = new CheckoutMovieOption();
         checkoutMovieOption.run(library, scanner, null);
-        String expectedOutput = "Select a movie that you would like to checkout ... Or type 'back' to go back to options\n" +
-                "Here is the list of movies in this Biblioteca\n" +
+        String expectedOutput = SELECT_MOVIE_MESSAGE + "\n" + MOVIE_LIST_MESSAGE + "\n" +
                 "0) title1,2020,director1\n" +
                 "1) title2,2020,director2,9\n\n" +
-                CHECKOUT_MOVIE_SUCCESS_MESSAGE + "\n";
+                CHECKOUT_MOVIE_SUCCESS_MESSAGE;
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);
     }

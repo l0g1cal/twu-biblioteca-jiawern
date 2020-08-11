@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import static com.twu.biblioteca.Constants.BOOK_LIST_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class DisplayBooksOptionTest {
@@ -43,7 +44,7 @@ public class DisplayBooksOptionTest {
     public void displayBooksOptionWhenRunShouldReturnListOfBooks() {
         Option displayOption = new DisplayBooksOption();
         displayOption.run(library, null, null);
-        String expectedOutput = "Here is the list of books in this Biblioteca\n" +
+        String expectedOutput = BOOK_LIST_MESSAGE + "\n" +
                 "0) title1,author1,2020\n" +
                 "1) title2,author2,2020\n";
         String actualOutput = outContent.toString().trim() + "\n";

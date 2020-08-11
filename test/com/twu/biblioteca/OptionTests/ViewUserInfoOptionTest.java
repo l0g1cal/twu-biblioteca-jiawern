@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static com.twu.biblioteca.Constants.USER_INFO_LIST_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class ViewUserInfoOptionTest {
@@ -32,7 +33,7 @@ public class ViewUserInfoOptionTest {
     public void displayMoviesOptionWhenRunShouldReturnListOfMovies() {
         Option viewUserInfoOption = new ViewUserInfoOption();
         viewUserInfoOption.run(null, null, null);
-        String expectedOutput = "Here is your information\n\n" +
+        String expectedOutput = USER_INFO_LIST_MESSAGE + "\n" +
                 "user1,user1@gmail.com,12345678\n";
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);

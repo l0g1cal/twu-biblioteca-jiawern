@@ -14,6 +14,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.twu.biblioteca.Constants.RETURN_BOOK_MESSAGE;
 import static com.twu.biblioteca.Constants.RETURN_BOOK_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
@@ -58,9 +59,9 @@ public class ReturnBookOptionTest {
     public void returnBookOptionWhenRunAndBookBelongsToLibraryShouldOutputSuccessMessage() {
         Option returnBookOption = new ReturnBookOption();
         returnBookOption.run(library, scanner, null);
-        String expectedOutput = "Select a book that you would like to return ... Or type 'back' to go back to options\n" +
+        String expectedOutput = RETURN_BOOK_MESSAGE + "\n" +
                 "0) title1,author1,2020\n\n" +
-                RETURN_BOOK_SUCCESS_MESSAGE + "\n";
+                RETURN_BOOK_SUCCESS_MESSAGE;
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);
     }
