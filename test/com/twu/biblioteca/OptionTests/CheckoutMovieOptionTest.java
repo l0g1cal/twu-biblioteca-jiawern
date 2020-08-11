@@ -54,7 +54,7 @@ public class CheckoutMovieOptionTest {
     @Test
     public void checkoutMovieOptionWhenRunAndMovieAvailableShouldReturnListOfMoviesAndOutputSuccessMessage() {
         Option checkoutMovieOption = new CheckoutMovieOption();
-        checkoutMovieOption.run(library, scanner);
+        checkoutMovieOption.run(library, scanner, null);
         String expectedOutput = "Select a movie that you would like to checkout ... Or type 'back' to go back to options\n" +
                 "Here is the list of movies in this Biblioteca\n" +
                 "0) title1,2020,director1\n" +

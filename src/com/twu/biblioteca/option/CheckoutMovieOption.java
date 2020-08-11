@@ -1,5 +1,6 @@
 package com.twu.biblioteca.option;
 
+import com.twu.biblioteca.Authenticator;
 import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.Library;
 import com.twu.biblioteca.Movie;
@@ -12,7 +13,7 @@ import static com.twu.biblioteca.Constants.*;
 public class CheckoutMovieOption implements Option {
 
     @Override
-    public void run(Library library, Scanner scanner) {
+    public void run(Library library, Scanner scanner, Authenticator authenticator) {
         while (true) {
             BibliotecaApp.printToCommandLine("Select a movie that you would like to checkout ... Or type 'back' to go back to options");
             ArrayList<Movie> movies = library.getMovies();

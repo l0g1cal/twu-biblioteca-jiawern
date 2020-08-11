@@ -55,7 +55,7 @@ public class ReturnBookOptionTest {
     @Test
     public void returnBookOptionWhenRunAndBookBelongsToLibraryShouldOutputSuccessMessage() {
         Option returnBookOption = new ReturnBookOption();
-        returnBookOption.run(library, scanner);
+        returnBookOption.run(library, scanner, null);
         String expectedOutput = "Select a book that you would like to return ... Or type 'back' to go back to options\n" +
                 "0) title1,author1,2020\n\n" +
                 RETURN_BOOK_SUCCESS_MESSAGE + "\n";

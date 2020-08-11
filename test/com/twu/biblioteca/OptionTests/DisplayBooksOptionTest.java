@@ -42,7 +42,7 @@ public class DisplayBooksOptionTest {
     @Test
     public void displayBooksOptionWhenRunShouldReturnListOfBooks() {
         Option displayOption = new DisplayBooksOption();
-        displayOption.run(library, null);
+        displayOption.run(library, null, null);
         String expectedOutput = "Here is the list of books in this Biblioteca\n" +
                 "0) title1,author1,2020\n" +
                 "1) title2,author2,2020\n";

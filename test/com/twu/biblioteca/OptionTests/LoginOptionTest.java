@@ -1,6 +1,7 @@
 package com.twu.biblioteca.OptionTests;
 
 import com.twu.biblioteca.*;
+import com.twu.biblioteca.option.LoginOption;
 import com.twu.biblioteca.option.Option;
 import org.junit.After;
 import org.junit.Before;
@@ -13,6 +14,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.twu.biblioteca.Constants.LOGIN_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class LoginOptionTest {
@@ -40,13 +42,13 @@ public class LoginOptionTest {
         User user2 = new User("user2", "234-56789", "p2", false);
         users.add(user1);
         users.add(user2);
-        authenticator = new Authenticator(users));
+        authenticator = new Authenticator(users);
     }
 
     @Test
     public void loginOptionWhenRunAndValidUserShouldReturnUserAndOutputSuccessMessage() {
         Option loginOption = new LoginOption();
-        LoginOption.run(null, scanner, authenticator);
+        loginOption.run(null, scanner, authenticator);
         String expectedOutput = "Please enter your login details ... Or type 'back' to go back to options\n" +
                 "Format: libraryNumber,password\n" +
                 "Eg: 111-11111,passWORD\n\n" +

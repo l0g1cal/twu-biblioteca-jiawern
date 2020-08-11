@@ -42,7 +42,7 @@ public class DisplayMoviesOptionTest {
     @Test
     public void displayMoviesOptionWhenRunShouldReturnListOfMovies() {
         Option displayOption = new DisplayMoviesOption();
-        displayOption.run(library, null);
+        displayOption.run(library, null, null);
         String expectedOutput = "Here is the list of movies in this Biblioteca\n" +
                 "0) title1,2020,director1\n" +
                 "1) title2,2020,director2,9\n";

@@ -1,5 +1,6 @@
 package com.twu.biblioteca.option;
 
+import com.twu.biblioteca.Authenticator;
 import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.Library;
@@ -13,7 +14,7 @@ import static com.twu.biblioteca.Constants.RETURN_BOOK_SUCCESS_MESSAGE;
 public class ReturnBookOption implements Option {
 
     @Override
-    public void run(Library library, Scanner scanner) {
+    public void run(Library library, Scanner scanner, Authenticator authenticator) {
         while (true) {
             BibliotecaApp.printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");
             ArrayList<Book> borrowedBooks = library.getBorrowedBooks();

@@ -54,7 +54,7 @@ public class CheckoutBookOptionTest {
     @Test
     public void checkoutBookOptionWhenRunAndBookAvailableShouldReturnListOfBooksAndOutputSuccessMessage() {
         Option checkoutBookOption = new CheckoutBookOption();
-        checkoutBookOption.run(library, scanner);
+        checkoutBookOption.run(library, scanner, null);
         String expectedOutput = "Select a book that you would like to checkout ... Or type 'back' to go back to options\n" +
                 "Here is the list of books in this Biblioteca\n" +
                 "0) title1,author1,2020\n" +

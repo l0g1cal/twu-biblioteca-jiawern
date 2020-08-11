@@ -12,8 +12,11 @@ import static com.twu.biblioteca.Constants.*;
 public class BibliotecaApp {
     private static Library library;
     private static Authenticator authenticator;
-    private static Map<Integer, Option> optionMap = new HashMap<>();
-    private static Map<Integer, String> optionDescMap = new HashMap<>();
+    private static User currentUser;
+    private static Map<Integer, Option> generalOptionMap = new HashMap<>();
+    private static Map<Integer, String> generalOptionDescMap = new HashMap<>();
+    private static Map<Integer, Option> afterLoginOptionMap = new HashMap<>();
+    private static Map<Integer, String> afterLoginOptionDescMap = new HashMap<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -63,16 +66,26 @@ public class BibliotecaApp {
     }
 
     private static void createUserOptions() {
-        optionMap.put(DISPLAY_BOOKS_OPTION, new DisplayBooksOption());
-        optionDescMap.put(DISPLAY_BOOKS_OPTION, DISPLAY_BOOKS_OPTION_DESC);
-        optionMap.put(CHECKOUT_BOOK_OPTION, new CheckoutBookOption());
-        optionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
-        optionMap.put(RETURN_BOOK_OPTION, new ReturnBookOption());
-        optionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
-        optionMap.put(DISPLAY_MOVIES_OPTION, new DisplayMoviesOption());
-        optionDescMap.put(DISPLAY_MOVIES_OPTION, DISPLAY_MOVIES_OPTION_DESC);
-        optionMap.put(CHECKOUT_MOVIE_OPTION, new CheckoutMovieOption());
-        optionDescMap.put(CHECKOUT_MOVIE_OPTION, CHECKOUT_MOVIE_OPTION_DESC);
+        createGeneralUserOptions();
+        createAfterLoginUserOptions();
+    }
+
+    private static void createGeneralUserOptions() {
+        generalOptionMap.put(DISPLAY_BOOKS_OPTION, new DisplayBooksOption());
+        generalOptionDescMap.put(DISPLAY_BOOKS_OPTION, DISPLAY_BOOKS_OPTION_DESC);
+        generalOptionMap.put(DISPLAY_MOVIES_OPTION, new DisplayMoviesOption());
+        generalOptionDescMap.put(DISPLAY_MOVIES_OPTION, DISPLAY_MOVIES_OPTION_DESC);
+        generalOptionMap.put(LOGIN_OPTION, new LoginOption());
+        generalOptionDescMap.put(LOGIN_OPTION, LOGIN_OPTION_DESC);
+    }
+
+    private static void createAfterLoginUserOptions() {
+        afterLoginOptionMap.put(CHECKOUT_BOOK_OPTION, new CheckoutBookOption());
+        afterLoginOptionDescMap.put(CHECKOUT_BOOK_OPTION, CHECKOUT_BOOK_OPTION_DESC);
+        afterLoginOptionMap.put(RETURN_BOOK_OPTION, new ReturnBookOption());
+        afterLoginOptionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
+        afterLoginOptionMap.put(CHECKOUT_MOVIE_OPTION, new CheckoutMovieOption());
+        afterLoginOptionDescMap.put(CHECKOUT_MOVIE_OPTION, CHECKOUT_MOVIE_OPTION_DESC);
     }
 
     private static void displayWelcomeMessage() {
@@ -87,8 +100,28 @@ public class BibliotecaApp {
     }
 
     private static void displayOptions() {
-        for (int optionNumber = 1; optionNumber <= optionMap.size(); optionNumber++) {
-            String outputString = String.format("%d: %s", optionNumber, optionDescMap.get(optionNumber));
+        if (currentUser == null) {
+            displayGeneralOptions();
+
+        } else {
+            displayGeneralOptions();
+            displayLoginOptions();
+        }
+    }
+
+    private static void displayGeneralOptions() {
+        for (int optionNumber = 1; optionNumber <= generalOptionMap.size(); optionNumber++) {
+            String outputString = String.format("%d: %s", optionNumber, generalOptionDescMap.get(optionNumber));
+            printToCommandLine(outputString);
+        }
+    }
+
+    private static void displayLoginOptions() {
+        int loginOptionsStartingNumber = generalOptionMap.size() + 1;
+        int loginOptionsSize = afterLoginOptionMap.size();
+
+        for (int optionNumber = loginOptionsStartingNumber; optionNumber < loginOptionsStartingNumber + loginOptionsSize; optionNumber++) {
+            String outputString = String.format("%d: %s", optionNumber, afterLoginOptionDescMap.get(optionNumber));
             printToCommandLine(outputString);
         }
     }
@@ -104,15 +137,30 @@ public class BibliotecaApp {
         }
         try {
             Integer iptValue = Integer.parseInt(ipt);
-            Option opt = optionMap.get(iptValue);
-            opt.run(library, scanner);
+            Option opt = getOption(iptValue);
+            opt.run(library, scanner, authenticator);
         }
         catch (Exception e) {
             printToCommandLine("Please select a valid option!");
         }
     }
 
+    private static Option getOption(Integer ipt) {
+        if (ipt <= generalOptionMap.size()) {
+            return generalOptionMap.get(ipt);
+        }
+        return afterLoginOptionMap.get(ipt);
+    }
+
     public static void printToCommandLine(String message) {
         System.out.println(message);
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
     }
 }
