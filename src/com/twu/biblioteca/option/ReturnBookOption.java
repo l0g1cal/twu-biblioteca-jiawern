@@ -16,7 +16,7 @@ public class ReturnBookOption implements Option {
             User currentUser = BibliotecaApp.getCurrentUser();
             boolean isUserHasBorrowedBooks = checkUserHasBorrowedBooks(library, currentUser);
             if (!isUserHasBorrowedBooks) {
-                BibliotecaApp.printToCommandLine("You currently do not have any borrowed books to return");
+                BibliotecaApp.printToCommandLine("You currently do not have any borrowed books to return\n");
                 break;
             }
             BibliotecaApp.printToCommandLine("Select a book that you would like to return ... Or type 'back' to go back to options");

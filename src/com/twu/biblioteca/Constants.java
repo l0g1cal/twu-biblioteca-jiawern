@@ -5,14 +5,14 @@ public final class Constants {
     private Constants() {}
 
     public static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
-    public static final String CHECKOUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book!";
-    public static final String CHECKOUT_BOOK_FAILURE_MESSAGE = "Sorry, that book is unavailable";
-    public static final String RETURN_BOOK_SUCCESS_MESSAGE = "Thank you for returning the book.";
-    public static final String RETURN_BOOK_FAILURE_MESSAGE = "That is not a valid book to return.";
-    public static final String CHECKOUT_MOVIE_SUCCESS_MESSAGE = "Thank you! Enjoy the movie!";
-    public static final String CHECKOUT_MOVIE_FAILURE_MESSAGE = "Sorry, that movie is unavailable";
-    public static final String LOGIN_SUCCESS_MESSAGE = "Login Successful";
-    public static final String LOGIN_FAILURE_MESSAGE = "Sorry, please try logging in again";
+    public static final String CHECKOUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book!\n";
+    public static final String CHECKOUT_BOOK_FAILURE_MESSAGE = "Sorry, that book is unavailable\n";
+    public static final String RETURN_BOOK_SUCCESS_MESSAGE = "Thank you for returning the book.\n";
+    public static final String RETURN_BOOK_FAILURE_MESSAGE = "That is not a valid book to return.\n";
+    public static final String CHECKOUT_MOVIE_SUCCESS_MESSAGE = "Thank you! Enjoy the movie!\n";
+    public static final String CHECKOUT_MOVIE_FAILURE_MESSAGE = "Sorry, that movie is unavailable\n";
+    public static final String LOGIN_SUCCESS_MESSAGE = "Login Successful\n";
+    public static final String LOGIN_FAILURE_MESSAGE = "Sorry, please try logging in again\n";
 
     public static final Integer DISPLAY_BOOKS_OPTION = 1;
     public static final String DISPLAY_BOOKS_OPTION_DESC = "List of books";

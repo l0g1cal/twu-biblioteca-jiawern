@@ -11,7 +11,7 @@ public class ViewUserInfoOption implements Option {
 
     @Override
     public void run(Library library, Scanner scanner, Authenticator authenticator) {
-        BibliotecaApp.printToCommandLine("Here is your information\n");
+        BibliotecaApp.printToCommandLine("Here is your information");
         User currentUser = BibliotecaApp.getCurrentUser();
         String infoString = currentUser.pprintUserInfo();
         BibliotecaApp.printToCommandLine(infoString);

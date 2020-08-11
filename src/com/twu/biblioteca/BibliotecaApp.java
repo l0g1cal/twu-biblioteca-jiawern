@@ -95,7 +95,7 @@ public class BibliotecaApp {
     }
 
     private static void awaitUserSelection() {
-        printToCommandLine("Please select an option number to continue ... Or type 'exit' to end program\n");
+        printToCommandLine("Please select an option number to continue ... Or type 'exit' to end program");
         displayOptions();
         String userInput = getUserInput();
         verifyAndRunInput(userInput);
@@ -104,10 +104,11 @@ public class BibliotecaApp {
     private static void displayOptions() {
         if (currentUser == null) {
             displayGeneralOptions();
-
+            printNewLine();
         } else {
             displayGeneralOptions();
             displayLoginOptions();
+            printNewLine();
         }
     }
 
@@ -139,11 +140,15 @@ public class BibliotecaApp {
         }
         try {
             Integer iptValue = Integer.parseInt(ipt);
-            Option opt = getOption(iptValue);
-            opt.run(library, scanner, authenticator);
+            if (currentUser == null && iptValue > 3) { // if not logged-in, can only choose 3 options
+                printToCommandLine("Please select a valid option!\n");
+            } else {
+                Option opt = getOption(iptValue);
+                opt.run(library, scanner, authenticator);
+            }
         }
         catch (Exception e) {
-            printToCommandLine("Please select a valid option!");
+            printToCommandLine("Please select a valid option!\n");
         }
     }
 
@@ -156,6 +161,10 @@ public class BibliotecaApp {
 
     public static void printToCommandLine(String message) {
         System.out.println(message);
+    }
+
+    private static void printNewLine() {
+        System.out.println();
     }
 
     public static User getCurrentUser() {

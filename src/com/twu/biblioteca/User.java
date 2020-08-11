@@ -35,6 +35,6 @@ public class User {
     }
 
     public String pprintUserInfo() {
-        return name + "," + email + "," + phoneNumber;
+        return name + "," + email + "," + phoneNumber + "\n";
     }
 }
