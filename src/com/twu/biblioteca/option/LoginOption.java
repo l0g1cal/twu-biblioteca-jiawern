@@ -38,10 +38,22 @@ public class LoginOption implements Option {
     }
 
     private String getInputLibraryNumber(String ipt) {
-        return ipt.split(",", 2)[0];
+        try {
+            String inputLibraryNumber = ipt.split(",", 2)[0];
+            return inputLibraryNumber;
+        }
+        catch (Exception e) {
+            return "";
+        }
     }
 
     private String getInputPassword(String ipt) {
-        return ipt.split(",", 2)[1];
+        try {
+            String inputPassword = ipt.split(",", 2)[1];
+            return inputPassword;
+        }
+        catch (Exception e) {
+            return "";
+        }
     }
 }
