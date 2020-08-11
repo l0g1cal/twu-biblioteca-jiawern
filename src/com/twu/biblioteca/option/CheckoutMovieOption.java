@@ -43,8 +43,7 @@ public class CheckoutMovieOption implements Option {
             } else {
                 BibliotecaApp.printToCommandLine(CHECKOUT_MOVIE_FAILURE_MESSAGE);
             }
-
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             BibliotecaApp.printToCommandLine(CHECKOUT_MOVIE_FAILURE_MESSAGE);
         }
         return false;

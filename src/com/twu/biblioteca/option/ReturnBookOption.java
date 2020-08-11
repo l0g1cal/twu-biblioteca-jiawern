@@ -54,8 +54,7 @@ public class ReturnBookOption implements Option {
             } else {
                 BibliotecaApp.printToCommandLine(RETURN_BOOK_FAILURE_MESSAGE);
             }
-
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             BibliotecaApp.printToCommandLine(RETURN_BOOK_FAILURE_MESSAGE);
         }
         return false;
