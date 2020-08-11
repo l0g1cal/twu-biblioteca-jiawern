@@ -20,12 +20,9 @@ import static com.twu.biblioteca.Constants.*;
 import static org.junit.Assert.assertEquals;
 
 public class CheckoutBookOptionTest {
-    private ArrayList<Book> books = new ArrayList<Book>();
-    private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Movie> movies = new ArrayList<>();
     private Library library;
-    private Book book1;
-    private Book book2;
-    private ByteArrayInputStream inContent;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -34,7 +31,7 @@ public class CheckoutBookOptionTest {
     @Before
     public void setUpStreams() {
         String input = "0";
-        inContent = new ByteArrayInputStream(input.getBytes());
+        ByteArrayInputStream inContent = new ByteArrayInputStream(input.getBytes());
 
         System.setIn(inContent);
         System.setOut(new PrintStream(outContent));
@@ -43,8 +40,8 @@ public class CheckoutBookOptionTest {
 
     @Before
     public void setUp() {
-        book1 = new Book("title1", "author1", "2020");
-        book2 = new Book("title2", "author2", "2020");
+        Book book1 = new Book("title1", "author1", "2020");
+        Book book2 = new Book("title2", "author2", "2020");
         books.add(book1);
         books.add(book2);
 

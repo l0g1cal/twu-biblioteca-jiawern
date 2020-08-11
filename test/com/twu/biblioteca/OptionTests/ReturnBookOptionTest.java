@@ -19,13 +19,9 @@ import static com.twu.biblioteca.Constants.RETURN_BOOK_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class ReturnBookOptionTest {
-    private ArrayList<Book> books = new ArrayList<Book>();
-    private ArrayList<Movie> movies = new ArrayList<Movie>();
-    private User currentUser;
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Movie> movies = new ArrayList<>();
     private Library library;
-    private Book book1;
-    private Book book2;
-    private ByteArrayInputStream inContent;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -34,7 +30,7 @@ public class ReturnBookOptionTest {
     @Before
     public void setUpStreams() {
         String input = "0";
-        inContent = new ByteArrayInputStream(input.getBytes());
+        ByteArrayInputStream inContent = new ByteArrayInputStream(input.getBytes());
 
         System.setIn(inContent);
         System.setOut(new PrintStream(outContent));
@@ -43,13 +39,13 @@ public class ReturnBookOptionTest {
 
     @Before
     public void setUp() {
-        book1 = new Book("title1", "author1", "2020");
-        book2 = new Book("title2", "author2", "2020");
+        Book book1 = new Book("title1", "author1", "2020");
+        Book book2 = new Book("title2", "author2", "2020");
         books.add(book1);
         books.add(book2);
 
         library = new Library(books, movies);
-        currentUser = new User("user1", "123-45678", "p1", "user1@gmail.com", "12345678", true);
+        User currentUser = new User("user1", "123-45678", "p1", "user1@gmail.com", "12345678", true);
 
         library.checkoutBook(book1, currentUser);
         BibliotecaApp.setCurrentUser(currentUser);

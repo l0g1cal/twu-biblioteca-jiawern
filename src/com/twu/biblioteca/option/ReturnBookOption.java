@@ -29,10 +29,7 @@ public class ReturnBookOption implements Option {
 
     private boolean checkUserHasBorrowedBooks(Library library, User user) {
         int numBorrowedBooks = library.totalBorrowedBooks(user);
-        if (numBorrowedBooks > 0) {
-            return true;
-        }
-        return false;
+        return numBorrowedBooks > 0;
     }
 
     private void displayBorrowedBooks(Library library, ArrayList<Book> borrowedBooks) {

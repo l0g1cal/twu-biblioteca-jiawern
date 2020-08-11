@@ -5,22 +5,20 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LibraryTest {
-    private ArrayList<Book> books = new ArrayList<Book>();
-    private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Movie> movies = new ArrayList<>();
     private User currentUser;
     private Library library;
-    private Book book1;
-    private Movie movie1;
 
     @Before
     public void setUp() {
-        book1 = new Book("title1", "author1", "2020");
+        Book book1 = new Book("title1", "author1", "2020");
         books.add(book1);
 
-        movie1 = new Movie("title1","2020", "director1");
+        Movie movie1 = new Movie("title1", "2020", "director1");
         movies.add(movie1);
 
         library = new Library(books, movies);
@@ -34,7 +32,7 @@ public class LibraryTest {
 
         Book bookToCheckout = books.get(0);
         boolean output = library.checkoutBook(bookToCheckout, currentUser);
-        assertEquals(true, output);
+        assertTrue(output);
         assertEquals(0, library.totalBooksInLibrary());
         assertEquals(1, library.totalBorrowedBooks(currentUser));
     }
@@ -50,7 +48,7 @@ public class LibraryTest {
         assertEquals(1, library.totalBorrowedBooks(currentUser));
 
         boolean output_unavailable = library.checkoutBook(bookToCheckout, currentUser);
-        assertEquals(false, output_unavailable);
+        assertFalse(output_unavailable);
         assertEquals(0, library.totalBooksInLibrary());
         assertEquals(1, library.totalBorrowedBooks(currentUser));
     }
@@ -66,7 +64,7 @@ public class LibraryTest {
         assertEquals(1, library.totalBorrowedBooks(currentUser));
 
         boolean returnOutput = library.returnBook(bookToCheckout, currentUser);
-        assertEquals(true, returnOutput);
+        assertTrue(returnOutput);
         assertEquals(1, library.totalBooksInLibrary());
         assertEquals(0, library.totalBorrowedBooks(currentUser));
     }
@@ -83,7 +81,7 @@ public class LibraryTest {
         assertEquals(0, library.totalBorrowedBooks(currentUser));
 
         boolean returnOutput = library.returnBook(bookToCheckout, currentUser);
-        assertEquals(false, returnOutput);
+        assertFalse(returnOutput);
         assertEquals(1, library.totalBooksInLibrary());
         assertEquals(0, library.totalBorrowedBooks(currentUser));
     }

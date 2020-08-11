@@ -19,9 +19,8 @@ import static com.twu.biblioteca.Constants.LOGIN_SUCCESS_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class LoginOptionTest {
-    private ArrayList<User> users = new ArrayList<User>();
+    private final ArrayList<User> users = new ArrayList<>();
     private Authenticator authenticator;
-    private ByteArrayInputStream inContent;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
@@ -30,7 +29,7 @@ public class LoginOptionTest {
     @Before
     public void setUpStreams() {
         String input = "123-45678,p1";
-        inContent = new ByteArrayInputStream(input.getBytes());
+        ByteArrayInputStream inContent = new ByteArrayInputStream(input.getBytes());
 
         System.setIn(inContent);
         System.setOut(new PrintStream(outContent));

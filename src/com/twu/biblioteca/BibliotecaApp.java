@@ -13,11 +13,11 @@ public class BibliotecaApp {
     private static Library library;
     private static Authenticator authenticator;
     private static User currentUser;
-    private static Map<Integer, Option> generalOptionMap = new HashMap<>();
-    private static Map<Integer, String> generalOptionDescMap = new HashMap<>();
-    private static Map<Integer, Option> afterLoginOptionMap = new HashMap<>();
-    private static Map<Integer, String> afterLoginOptionDescMap = new HashMap<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Map<Integer, Option> generalOptionMap = new HashMap<>();
+    private static final Map<Integer, String> generalOptionDescMap = new HashMap<>();
+    private static final Map<Integer, Option> afterLoginOptionMap = new HashMap<>();
+    private static final Map<Integer, String> afterLoginOptionDescMap = new HashMap<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         createNewLibrary();
@@ -35,7 +35,7 @@ public class BibliotecaApp {
     }
 
     private static ArrayList<Book> createNewBooks() {
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<Book> books = new ArrayList<>();
         Book book1 = new Book("title1", "author1", "2020");
         Book book2 = new Book("title2", "author2", "2020");
         books.add(book1);
@@ -44,7 +44,7 @@ public class BibliotecaApp {
     }
 
     private static ArrayList<Movie> createNewMovies() {
-        ArrayList<Movie> movies = new ArrayList<Movie>();
+        ArrayList<Movie> movies = new ArrayList<>();
         Movie movie1 = new Movie("title1","2020", "director1");
         Movie movie2 = new Movie("title2","2020", "director2", 9);
         movies.add(movie1);
@@ -57,7 +57,7 @@ public class BibliotecaApp {
     }
 
     private static ArrayList<User> createNewUsers() {
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
         User user1 = new User("user1", "123-45678", "p1", "user1@gmail.com", "12345678", true);
         User user2 = new User("user2", "234-56789", "p2", "user2@gmail.com", "87654321",false);
         users.add(user1);
@@ -139,7 +139,7 @@ public class BibliotecaApp {
             System.exit(0);
         }
         try {
-            Integer iptValue = Integer.parseInt(ipt);
+            int iptValue = Integer.parseInt(ipt);
             if (currentUser == null && iptValue > 3) { // if not logged-in, can only choose 3 options
                 printToCommandLine(INCORRECT_OPTION_MESSAGE);
             } else {

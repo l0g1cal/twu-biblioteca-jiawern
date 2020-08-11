@@ -17,11 +17,9 @@ import static com.twu.biblioteca.Constants.MOVIE_LIST_MESSAGE;
 import static org.junit.Assert.assertEquals;
 
 public class DisplayMoviesOptionTest {
-    private ArrayList<Book> books = new ArrayList<Book>();
-    private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Movie> movies = new ArrayList<>();
     private Library library;
-    private Movie movie1;
-    private Movie movie2;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -32,8 +30,8 @@ public class DisplayMoviesOptionTest {
 
     @Before
     public void setUp() {
-        movie1 = new Movie("title1","2020", "director1");
-        movie2 = new Movie("title2","2020", "director2", 9);
+        Movie movie1 = new Movie("title1", "2020", "director1");
+        Movie movie2 = new Movie("title2", "2020", "director2", 9);
         movies.add(movie1);
         movies.add(movie2);
 

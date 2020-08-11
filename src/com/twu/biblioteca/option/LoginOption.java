@@ -36,8 +36,7 @@ public class LoginOption implements Option {
 
     private String getInputLibraryNumber(String ipt) {
         try {
-            String inputLibraryNumber = ipt.split(",", 2)[0];
-            return inputLibraryNumber;
+            return ipt.split(",", 2)[0];
         }
         catch (Exception e) {
             return "";
@@ -46,8 +45,7 @@ public class LoginOption implements Option {
 
     private String getInputPassword(String ipt) {
         try {
-            String inputPassword = ipt.split(",", 2)[1];
-            return inputPassword;
+            return ipt.split(",", 2)[1];
         }
         catch (Exception e) {
             return "";
