@@ -4,12 +4,16 @@ public class User {
     private String name;
     private String libraryNumber;
     private String password;
+    private String email;
+    private String phoneNumber;
     private boolean isLibrarian;
 
-    public User(String name, String libraryNumber, String password, boolean isLibrarian) {
+    public User(String name, String libraryNumber, String password, String email, String phoneNumber, boolean isLibrarian) {
         this.name = name;
         this.libraryNumber = libraryNumber;
         this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.isLibrarian = isLibrarian;
     }
 
@@ -28,5 +32,9 @@ public class User {
     @Override
     public String toString() {
         return name + ": " + libraryNumber;
+    }
+
+    public String pprintUserInfo() {
+        return name + "," + email + "," + phoneNumber;
     }
 }

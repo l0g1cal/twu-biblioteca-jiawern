@@ -58,8 +58,8 @@ public class BibliotecaApp {
 
     private static ArrayList<User> createNewUsers() {
         ArrayList<User> users = new ArrayList<User>();
-        User user1 = new User("user1", "123-45678", "p1", true);
-        User user2 = new User("user2", "234-56789", "p2", false);
+        User user1 = new User("user1", "123-45678", "p1", "user1@gmail.com", "12345678", true);
+        User user2 = new User("user2", "234-56789", "p2", "user2@gmail.com", "87654321",false);
         users.add(user1);
         users.add(user2);
         return users;
@@ -86,6 +86,8 @@ public class BibliotecaApp {
         afterLoginOptionDescMap.put(RETURN_BOOK_OPTION, RETURN_BOOK_OPTION_DESC);
         afterLoginOptionMap.put(CHECKOUT_MOVIE_OPTION, new CheckoutMovieOption());
         afterLoginOptionDescMap.put(CHECKOUT_MOVIE_OPTION, CHECKOUT_MOVIE_OPTION_DESC);
+        afterLoginOptionMap.put(VIEW_USER_INFO_OPTION, new ViewUserInfoOption());
+        afterLoginOptionDescMap.put(VIEW_USER_INFO_OPTION, VIEW_USER_INFO_OPTION_DESC);
     }
 
     private static void displayWelcomeMessage() {

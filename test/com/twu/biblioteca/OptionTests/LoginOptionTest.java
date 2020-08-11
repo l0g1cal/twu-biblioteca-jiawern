@@ -38,8 +38,8 @@ public class LoginOptionTest {
 
     @Before
     public void setUp() {
-        User user1 = new User("user1", "123-45678", "p1", true);
-        User user2 = new User("user2", "234-56789", "p2", false);
+        User user1 = new User("user1", "123-45678", "p1", "user1@gmail.com", "12345678", true);
+        User user2 = new User("user2", "234-56789", "p2", "user2@gmail.com", "87654321",false);
         users.add(user1);
         users.add(user2);
         authenticator = new Authenticator(users);

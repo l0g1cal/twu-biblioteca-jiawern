@@ -3,6 +3,7 @@ package com.twu.biblioteca.OptionTests;
 import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.User;
 import com.twu.biblioteca.option.Option;
+import com.twu.biblioteca.option.ViewUserInfoOption;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class ViewUserInfoOptionTest {
     public void displayMoviesOptionWhenRunShouldReturnListOfMovies() {
         Option viewUserInfoOption = new ViewUserInfoOption();
         viewUserInfoOption.run(null, null, null);
-        String expectedOutput = "Here is your information\n" +
+        String expectedOutput = "Here is your information\n\n" +
                 "user1,user1@gmail.com,12345678\n";
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);

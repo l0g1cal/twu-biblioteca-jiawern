@@ -31,4 +31,7 @@ public final class Constants {
 
     public static final Integer CHECKOUT_MOVIE_OPTION = 6;
     public static final String CHECKOUT_MOVIE_OPTION_DESC = "Checkout movie";
+
+    public static final Integer VIEW_USER_INFO_OPTION = 7;
+    public static final String VIEW_USER_INFO_OPTION_DESC = "View user information";
 }
