@@ -29,6 +29,10 @@ public class User {
         return this.libraryNumber.equals(libraryNumber) && this.password.equals(password);
     }
 
+    public boolean isUserLibrarian() {
+        return isLibrarian;
+    }
+
     @Override
     public String toString() {
         return name + ": " + libraryNumber;

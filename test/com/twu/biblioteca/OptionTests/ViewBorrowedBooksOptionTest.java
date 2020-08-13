@@ -48,11 +48,13 @@ public class ViewBorrowedBooksOptionTest {
         Option viewBorrowedBooksOption = new ViewBorrowedBooksOption();
         viewBorrowedBooksOption.run(library, null, null);
         String expectedOutput = VIEW_BORROWED_BOOKS_MESSAGE + "\n" +
-                "Name: user1; Library Number: 123-45678\n" +
+                "Details: user1,user1@gmail.com,12345678\n" +
+                "Library Number: 123-45678\n" +
                 "0) title1,author1,2020\n\n" +
-                "Name: user2; Library Number: 234-56789\n" +
+                "Details: user2,user2@gmail.com,87654321\n" +
+                "Library Number: 234-56789\n" +
                 "0) title2,author2,2020\n" +
-                "1) title3,author3,2020\n\n";
+                "1) title3,author3,2020\n";
         String actualOutput = outContent.toString().trim() + "\n";
         assertEquals(expectedOutput, actualOutput);
     }

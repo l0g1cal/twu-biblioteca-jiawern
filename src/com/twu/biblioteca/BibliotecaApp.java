@@ -17,6 +17,8 @@ public class BibliotecaApp {
     private static final Map<Integer, String> generalOptionDescMap = new HashMap<>();
     private static final Map<Integer, Option> afterLoginOptionMap = new HashMap<>();
     private static final Map<Integer, String> afterLoginOptionDescMap = new HashMap<>();
+    private static final Map<Integer, Option> librarianOptionMap = new HashMap<>();
+    private static final Map<Integer, String> librarianOptionDescMap = new HashMap<>();
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -68,6 +70,7 @@ public class BibliotecaApp {
     private static void createUserOptions() {
         createGeneralUserOptions();
         createAfterLoginUserOptions();
+        createLibrarianOptions();
     }
 
     private static void createGeneralUserOptions() {
@@ -90,6 +93,11 @@ public class BibliotecaApp {
         afterLoginOptionDescMap.put(VIEW_USER_INFO_OPTION, VIEW_USER_INFO_OPTION_DESC);
     }
 
+    private static void createLibrarianOptions() {
+        librarianOptionMap.put(VIEW_BORROWED_BOOKS_OPTION, new ViewBorrowedBooksOption());
+        librarianOptionDescMap.put(VIEW_BORROWED_BOOKS_OPTION, VIEW_BORROWED_BOOKS_OPTION_DESC);
+    }
+
     private static void displayWelcomeMessage() {
         printToCommandLine(WELCOME_MESSAGE);
     }
@@ -102,14 +110,15 @@ public class BibliotecaApp {
     }
 
     private static void displayOptions() {
-        if (currentUser == null) {
-            displayGeneralOptions();
-            printNewLine();
-        } else {
-            displayGeneralOptions();
+        displayGeneralOptions();
+
+        if (currentUser != null) {
             displayLoginOptions();
-            printNewLine();
         }
+        if (currentUser != null && currentUser.isUserLibrarian()) {
+            displayLibrarianOptions();
+        }
+        printNewLine();
     }
 
     private static void displayGeneralOptions() {
@@ -125,6 +134,16 @@ public class BibliotecaApp {
 
         for (int optionNumber = loginOptionsStartingNumber; optionNumber < loginOptionsStartingNumber + loginOptionsSize; optionNumber++) {
             String outputString = String.format("%d: %s", optionNumber, afterLoginOptionDescMap.get(optionNumber));
+            printToCommandLine(outputString);
+        }
+    }
+
+    private static void displayLibrarianOptions() {
+        int librarianOptionsStartingNumber = generalOptionMap.size() + afterLoginOptionMap.size() + 1;
+        int librarianOptiosnSize = librarianOptionMap.size();
+
+        for (int optionNumber = librarianOptionsStartingNumber; optionNumber < librarianOptionsStartingNumber + librarianOptiosnSize; optionNumber++) {
+            String outputString = String.format("%d: %s", optionNumber, librarianOptionDescMap.get(optionNumber));
             printToCommandLine(outputString);
         }
     }
@@ -155,8 +174,10 @@ public class BibliotecaApp {
     private static Option getOption(Integer ipt) {
         if (ipt <= generalOptionMap.size()) {
             return generalOptionMap.get(ipt);
+        } else if (ipt <= generalOptionMap.size() + afterLoginOptionMap.size()) {
+            return afterLoginOptionMap.get(ipt);
         }
-        return afterLoginOptionMap.get(ipt);
+        return librarianOptionMap.get(ipt);
     }
 
     public static void printToCommandLine(String message) {

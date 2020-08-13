@@ -29,6 +29,10 @@ public class Library {
         return borrowedBooks;
     }
 
+    public Map<User, ArrayList<Book>> getBorrowedBooksMap() {
+        return borrowedBooksMap;
+    }
+
     public int totalBooksInLibrary() {
         return books.size();
     }

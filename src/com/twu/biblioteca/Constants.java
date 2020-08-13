@@ -20,6 +20,7 @@ public final class Constants {
     public static final String MOVIE_LIST_MESSAGE = "Here is the list of movies in this Biblioteca";
     public static final String USER_INFO_LIST_MESSAGE = "Here is the list of information";
     public static final String NO_BORROWED_BOOKS_MESSAGE = "You currently do not have any borrowed books to return\n";
+    public static final String VIEW_BORROWED_BOOKS_MESSAGE = "Here is the list of books borrowed by users\n";
 
     public static final String CHECKOUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book!\n";
     public static final String CHECKOUT_BOOK_FAILURE_MESSAGE = "Sorry, that book is unavailable\n";
@@ -50,4 +51,7 @@ public final class Constants {
 
     public static final Integer VIEW_USER_INFO_OPTION = 7;
     public static final String VIEW_USER_INFO_OPTION_DESC = "View user information";
+
+    public static final Integer VIEW_BORROWED_BOOKS_OPTION = 8;
+    public static final String VIEW_BORROWED_BOOKS_OPTION_DESC = "View borrowed books";
 }
